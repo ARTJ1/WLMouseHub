@@ -284,11 +284,21 @@ public partial class MainWindow : Window
         _battery = b;
         string text = $"BAT:{b.Percent}%" + (b.Charging ? " ⚡" : "");
         TxtHomeBat.Text = TxtInfoBat.Text = text;
-        Anim.To(BarHomeBat, WidthProperty, Math.Max(0, 110 * b.Percent / 100.0), 700);
-        Anim.To(BarInfoBat, WidthProperty, Math.Max(0, 100 * b.Percent / 100.0), 700);
+        FillBattery(BarHomeBat, 700);
+        FillBattery(BarInfoBat, 700);
         string model = _mouse?.Model.ModelEN ?? "";
         _tray.Text = $"WLMOUSE {model} – {b.Percent}%{(b.Charging ? " " + Loc.T("Charging") : "")}";
     }
+
+    // The bar fills its pill by the battery percentage; the pill width depends on the window size.
+    private void FillBattery(FrameworkElement bar, int ms)
+    {
+        double full = ((FrameworkElement)bar.Parent).ActualWidth;
+        Anim.To(bar, WidthProperty, Math.Clamp(_battery.Percent, 0, 100) / 100.0 * full, ms);
+    }
+
+    private void BatteryPill_SizeChanged(object sender, SizeChangedEventArgs e) =>
+        FillBattery((FrameworkElement)((Grid)sender).Children[0], 0);
 
     private async Task RefreshBatteryAsync()
     {

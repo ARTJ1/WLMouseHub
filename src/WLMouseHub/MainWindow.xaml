@@ -144,7 +144,7 @@
                                         <Border Style="{StaticResource PillBox}" Margin="0,0,6,8"><TextBlock x:Name="TxtHomeDpi" Style="{StaticResource T.Small}" HorizontalAlignment="Center" /></Border>
                                         <Border Style="{StaticResource PillBox}" Margin="6,0,0,8"><TextBlock x:Name="TxtHomePoll" Style="{StaticResource T.Small}" HorizontalAlignment="Center" /></Border>
                                         <Border Style="{StaticResource PillBox}" Margin="0,0,6,8" Padding="4">
-                                            <Grid>
+                                            <Grid SizeChanged="BatteryPill_SizeChanged">
                                                 <Border x:Name="BarHomeBat" Background="{DynamicResource B.Accent}" CornerRadius="10" HorizontalAlignment="Left" Width="0" />
                                                 <TextBlock x:Name="TxtHomeBat" Style="{StaticResource T.Small}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                             </Grid>
@@ -236,7 +236,7 @@
                                 <Border Style="{StaticResource PillBox}" Margin="0,0,5,8"><TextBlock x:Name="TxtInfoDpi" Style="{StaticResource T.Small}" HorizontalAlignment="Center" /></Border>
                                 <Border Style="{StaticResource PillBox}" Margin="5,0,0,8"><TextBlock x:Name="TxtInfoPoll" Style="{StaticResource T.Small}" HorizontalAlignment="Center" /></Border>
                                 <Border Style="{StaticResource PillBox}" Margin="0,0,5,8" Padding="4">
-                                    <Grid>
+                                    <Grid SizeChanged="BatteryPill_SizeChanged">
                                         <Border x:Name="BarInfoBat" Background="{DynamicResource B.Accent}" CornerRadius="10" HorizontalAlignment="Left" Width="0" />
                                         <TextBlock x:Name="TxtInfoBat" Style="{StaticResource T.Small}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Grid>
